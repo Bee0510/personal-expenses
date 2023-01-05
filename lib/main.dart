@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         fontFamily: 'OpenSans',
-        errorColor: Color.fromARGB(255, 91, 26, 22),
+        errorColor: Colors.red,
       ),
       home: MyHomePage(),
     );
