@@ -17,66 +17,71 @@ class _LandingPageState extends State<LandingPage> {
   static const LandMe = 'Land';
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        height: double.infinity,
-        child: Scaffold(
-          body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.red, Colors.orange],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            margin: EdgeInsets.symmetric(vertical: 150),
-            child: Center(
-              child: Column(
-                children: [
-                  Text(
-                    'Welcome to App',
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text("Let's save some money together"),
-                ],
-              ),
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('Images/LandingBg.jpg'))),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('Images/LandingBg.jpg'),
+              fit: BoxFit.cover,
             ),
           ),
-          bottomNavigationBar: Container(
-            padding: EdgeInsets.all(1.2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () async {
-                    var sharedpref = await SharedPreferences.getInstance();
-                    sharedpref.setBool(MySplashScreenState.Keyword, true);
-
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => MyHomePage()));
-                  },
-                  child: Container(
-                    width: 310,
-                    child: Text('Get Started'),
-                  ),
+          child: Scaffold(
+            body: Container(
+              margin: EdgeInsets.symmetric(vertical: 150),
+              child: Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Welcome to App',
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("Let's save some money together"),
+                  ],
                 ),
-                IconButton(
-                  onPressed: (() async {
-                    var sharedpref = await SharedPreferences.getInstance();
-                    sharedpref.setBool(MySplashScreenState.Keyword, true);
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => MyHomePage()));
-                  }),
-                  icon: Icon(
-                    Icons.arrow_circle_right_rounded,
+              ),
+            ),
+            bottomNavigationBar: Container(
+              padding: EdgeInsets.all(1.2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  ElevatedButton(
+                    onPressed: () async {
+                      var sharedpref = await SharedPreferences.getInstance();
+                      sharedpref.setBool(MySplashScreenState.Keyword, true);
+
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => MyHomePage()));
+                    },
+                    child: Container(
+                      width: 310,
+                      child: Text('Get Started'),
+                    ),
                   ),
-                  color: Colors.black,
-                )
-              ],
+                  IconButton(
+                    onPressed: (() async {
+                      var sharedpref = await SharedPreferences.getInstance();
+                      sharedpref.setBool(MySplashScreenState.Keyword, true);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => MyHomePage()));
+                    }),
+                    icon: Icon(
+                      Icons.arrow_circle_right_rounded,
+                    ),
+                    color: Colors.black,
+                  )
+                ],
+              ),
             ),
           ),
         ),
