@@ -103,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Scaffold(
+        backgroundColor: Color.fromRGBO(191, 234, 245, 60),
         appBar: AppBar(
           leading: Builder(builder: (BuildContext context) {
             return CircleAvatar(
@@ -145,16 +146,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: EdgeInsets.all(10),
                 child: Center(
                   child: Card(
-                    color: Colors.transparent,
+                    color: Color.fromRGBO(151, 222, 206, 100),
                     child: Text(
                       'Weekly Expenses Report',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 30),
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 5,
+                height: 3,
               ),
               Chart(_recentTransaction),
               TransactionList(_usertransaction, _deleteTransaction),

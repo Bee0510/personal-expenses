@@ -52,7 +52,7 @@ class AboutUs extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 40,
             ),
             CircleAvatar(
               backgroundImage: AssetImage('Images/Animesh.jpeg'),

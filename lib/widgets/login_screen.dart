@@ -7,6 +7,7 @@ import 'package:flutter_application_1/Landing_page.dart';
 import '../login.dart';
 import '../splash_screen.dart';
 import 'Login Bg.dart';
+import 'package:animate_gradient/animate_gradient.dart';
 
 class MyLoginScreen extends StatefulWidget {
   @override
@@ -24,10 +25,7 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage('Images/AppIcon.png'))),
         child: Scaffold(
-          // backgroundColor: Colors.yellow,
           body: Center(
             child: Container(
               width: 300,

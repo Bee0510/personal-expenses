@@ -39,6 +39,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   hexcolor: ^3.0.1
   math_expressions: ^2.3.1
+  animate_gradient: ^0.0.2
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - Images/LandingBg.jpg 
     - Images/Vishal.png 
     - Images/Animesh.jpeg
+    - Images/market.png
         
 
 
