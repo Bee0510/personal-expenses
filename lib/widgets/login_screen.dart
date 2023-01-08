@@ -81,6 +81,13 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
                         backgroundColor: Colors.blueAccent,
                       )
                     ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                    onPressed: (() {}),
+                    child: Center(child: Text('Register?')),
                   )
                 ],
               ),
