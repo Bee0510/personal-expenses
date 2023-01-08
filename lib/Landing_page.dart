@@ -26,7 +26,7 @@ class _LandingPageState extends State<LandingPage> {
           width: 100,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('Images/LandingBg.jpg'),
+              image: AssetImage('Images/LandingBg.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -37,14 +37,14 @@ class _LandingPageState extends State<LandingPage> {
                 child: Column(
                   children: [
                     Text(
-                      'Welcome to App',
+                      'Welcome to Kharche',
                       style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Text("Let's save some money together"),
+                    Text("Let's save some money together by reducing Kharche"),
                   ],
                 ),
               ),
