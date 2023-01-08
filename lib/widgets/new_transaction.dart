@@ -63,16 +63,26 @@ class _NewTransactionState extends State<NewTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(label: Text('Title')),
+              decoration: InputDecoration(
+                  label: Text('Title'),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20))),
               controller: titlecontroller,
               onSubmitted: (val) => submitdata(),
             ),
+            SizedBox(
+              height: 5,
+            ),
             TextField(
-              decoration: InputDecoration(label: Text('Value')),
+              decoration: InputDecoration(
+                  label: Text('Value'),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20))),
               controller: valuecontroller,
               keyboardType: TextInputType.number,
               onSubmitted: (val) => submitdata(),
             ),
+            SizedBox(height: 5),
             Container(
               height: 60,
               child: Row(
@@ -97,9 +107,11 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             ElevatedButton(
               onPressed: submitdata,
-              child: Text(
-                'Add Transaction',
-                style: TextStyle(color: Colors.white),
+              child: Center(
+                child: Text(
+                  'Add Transaction',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             )
           ],

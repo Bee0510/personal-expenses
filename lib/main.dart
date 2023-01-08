@@ -1,4 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, use_key_in_widget_constructors, non_constant_identifier_names, unused_import, duplicate_import
+import 'package:flutter_application_1/Landing_page.dart';
+import 'package:flutter_application_1/calculator.dart';
+import 'package:flutter_application_1/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import './widgets/transaction_list.dart';
@@ -7,6 +10,11 @@ import '../models/transaction.dart';
 import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart ';
 import './widgets/chart.dart';
+import 'Landing_page.dart';
+import 'widgets/login_screen.dart';
+import 'splash_screen.dart';
+import 'calculator.dart';
+import './widgets/About_Us.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'OpenSans',
         errorColor: Colors.red,
       ),
-      home: MyHomePage(),
+      home: MySplashScreen(),
     );
   }
 }
@@ -92,38 +100,72 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Personal Expenses',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => StartAddNewTransaction(context),
-          ),
-          PopupMenuButton(itemBuilder: (BuildContext context) {
-            return [
-              const PopupMenuItem(child: Text('First')),
-              const PopupMenuItem(child: Text('Second')),
-            ];
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Builder(builder: (BuildContext context) {
+            return CircleAvatar(
+              backgroundColor: Colors.grey[400],
+              child: IconButton(
+                icon: Icon(Icons.person_outline_sharp),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+              radius: 18,
+            );
           }),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Chart(_recentTransaction),
-            TransactionList(_usertransaction, _deleteTransaction),
+          title: Text(
+            'Personal Expenses',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 25),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.calculate_outlined),
+              onPressed: (() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => Calculator())));
+              }),
+            ),
+            IconButton(
+                onPressed: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => AboutUs())));
+                }),
+                icon: Icon(Icons.info_outline_rounded))
           ],
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => StartAddNewTransaction(context),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(10),
+                child: Center(
+                  child: Card(
+                    color: Colors.transparent,
+                    child: Text(
+                      'Weekly Expenses Report',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Chart(_recentTransaction),
+              TransactionList(_usertransaction, _deleteTransaction),
+            ],
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => StartAddNewTransaction(context),
+        ),
       ),
     );
   }
