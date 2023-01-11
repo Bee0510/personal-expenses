@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'buttons.dart';
@@ -50,8 +50,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Calculator"),
+      appBar: AppBar(
+        title: Text("Calculator"),
       ), //AppBar
       backgroundColor: Colors.white38,
       body: Column(

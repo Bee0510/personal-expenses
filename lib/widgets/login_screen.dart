@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, use_build_context_synchronously, unused_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, use_build_context_synchronously, unused_import, use_key_in_widget_constructors
 
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,9 +15,7 @@ class MyLoginScreen extends StatefulWidget {
 }
 
 class _MyLoginScreenState extends State<MyLoginScreen> {
-  @required
-  final Name = TextEditingController();
-  @required
+  final NAME = TextEditingController();
   final PASSWORD = TextEditingController();
 
   @override
@@ -41,7 +39,7 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
                     height: 20,
                   ),
                   TextField(
-                    controller: Name,
+                    controller: NAME,
                     decoration: InputDecoration(
                       labelText: 'Phone No/Email',
                       border: OutlineInputBorder(

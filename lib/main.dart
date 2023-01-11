@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, use_key_in_widget_constructors, non_constant_identifier_names, unused_import, duplicate_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, use_key_in_widget_constructors, non_constant_identifier_names, unused_import, duplicate_import, unused_field, prefer_final_fields
 import 'package:flutter_application_1/Landing_page.dart';
 import 'package:flutter_application_1/calculator.dart';
 import 'package:flutter_application_1/login.dart';
@@ -15,8 +15,16 @@ import 'widgets/login_screen.dart';
 import 'splash_screen.dart';
 import 'calculator.dart';
 import './widgets/About_Us.dart';
+// import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -98,6 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  bool _ShowChart = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -110,9 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
               backgroundColor: Colors.grey[400],
               child: IconButton(
                 icon: Icon(Icons.person_outline_sharp),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
               ),
               radius: 18,
             );
@@ -131,35 +138,54 @@ class _MyHomePageState extends State<MyHomePage> {
               }),
             ),
             IconButton(
-                onPressed: (() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => AboutUs())));
-                }),
-                icon: Icon(Icons.info_outline_rounded))
+              onPressed: (() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => AboutUs())));
+              }),
+              icon: Icon(Icons.info_outline_rounded),
+            )
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Center(
-                  child: Card(
-                    color: Color.fromRGBO(151, 222, 206, 100),
-                    child: Text(
-                      'Weekly Expenses Report',
-                      style: TextStyle(fontSize: 30),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Center(
+                      child: Text(
+                    'Show Chart',
+                    style: TextStyle(fontSize: 24),
+                  )),
+                ),
+                Switch(
+                    value: _ShowChart,
+                    onChanged: (val) {
+                      setState(() {
+                        _ShowChart = val;
+                      });
+                    }),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Center(
+                    child: Card(
+                      color: Color.fromRGBO(151, 222, 206, 100),
+                      child: Text(
+                        'Weekly Expenses Report',
+                        style: TextStyle(fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Chart(_recentTransaction),
-              TransactionList(_usertransaction, _deleteTransaction),
-            ],
+                SizedBox(
+                  height: 3,
+                ),
+                _ShowChart
+                    ? Chart(_recentTransaction)
+                    : TransactionList(_usertransaction, _deleteTransaction),
+              ],
+            ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
